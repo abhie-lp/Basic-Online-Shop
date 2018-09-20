@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import  reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True)
@@ -11,6 +12,9 @@ class Category(models.Model):
     
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse("shop:product_category_list", args=[self.slug])
 
 
 class Product(models.Model):
@@ -29,3 +33,6 @@ class Product(models.Model):
     
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse("shop:product_detail", args=[self.id, self.slug])
