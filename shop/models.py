@@ -27,6 +27,11 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def location(instance, filename):
+        return f"media/products/{instance.category.name}/{instance.created.year}/{instance.created.month}/{filename}/"
+    
+    image = models.ImageField(upload_to=location, blank=True)
+
     class Meta:
         ordering = "name",
         index_together = (("id", "slug"),)
@@ -36,3 +41,6 @@ class Product(models.Model):
     
     def get_absolute_url(self):
         return reverse("shop:product_detail", args=[self.id, self.slug])
+    
+    def location(self):
+        return self.category.name
