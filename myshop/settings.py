@@ -114,3 +114,5 @@ STATICFILES_DIRS = os.path.join(BASE_DIR, "static"),
 
 MEDIA_URL = "/media/"
 MEDIAFILES_DIRS = os.path.join(BASE_DIR, "media"),
+
+CART_SESSION_ID = "cart"
