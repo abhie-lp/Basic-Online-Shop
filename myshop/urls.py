@@ -6,6 +6,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [
+    path("cart/", include("cart.urls", namespace="cart")),
     path("", include("shop.urls", namespace="shop")),
 ]
 
