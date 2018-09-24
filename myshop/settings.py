@@ -121,3 +121,17 @@ MEDIAFILES_DIRS = os.path.join(BASE_DIR, "media"),
 CART_SESSION_ID = "cart"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+with open("brain.txt", "r") as br:
+    BRAINTREE_MERCHANT_ID = br.readline()
+    BRAINTREE_PUBLIC_KEY = br.readline()
+    BRAINTREE_PRIVATE_KEY = br.readline()
+
+from braintree import Configuration, Environment
+
+Configuration.configure(
+    Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY,
+)
