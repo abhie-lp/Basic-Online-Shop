@@ -9,6 +9,7 @@ django = "*"
 pillow = "*"
 celery = "*"
 flower = "*"
+braintree = "*"
 
 [dev-packages]
 
