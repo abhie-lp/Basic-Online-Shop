@@ -124,15 +124,19 @@ CART_SESSION_ID = "cart"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 with open("brain.txt", "r") as br:
-    BRAINTREE_MERCHANT_ID = br.readline()
-    BRAINTREE_PUBLIC_KEY = br.readline()
-    BRAINTREE_PRIVATE_KEY = br.readline()
+    BRAINTREE_MERCHANT_ID = br.readline().strip()
+    BRAINTREE_PUBLIC_KEY = br.readline().strip()
+    BRAINTREE_PRIVATE_KEY = br.readline().strip()
+# BRAINTREE_MERCHANT_ID = "4c87ndsss49pk4rm"
+# BRAINTREE_PUBLIC_KEY = "jwvffyj8tpsdv2yj"
+# BRAINTREE_PRIVATE_KEY = "9a6a49a08ed5ce61da33000f891479b8"
 
 from braintree import Configuration, Environment
 
+
 Configuration.configure(
     Environment.Sandbox,
-    BRAINTREE_MERCHANT_ID,
-    BRAINTREE_PUBLIC_KEY,
-    BRAINTREE_PRIVATE_KEY,
+        BRAINTREE_MERCHANT_ID,
+        BRAINTREE_PUBLIC_KEY,
+        BRAINTREE_PRIVATE_KEY
 )
