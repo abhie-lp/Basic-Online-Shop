@@ -30,9 +30,15 @@ def export_to_csv(modeladmin, request, queryset):
 export_to_csv.short_description = "Export to CSV"
 
 
+from django.urls import reverse
+from django.utils.safestring import mark_safe
+
+def order_detail(obj):
+    return mark_safe('<a href="{}">View</a>'.format(reverse("orders:admin_order_detail", args=[obj.id])))
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = "id", "first_name", "last_name", "email", "address", "postal_code", "city", "paid", "created", "updated",
+    list_display = "id", "first_name", "last_name", "email", "address", "postal_code", "city", "paid", "created", "updated", order_detail,
     list_filter = "paid", "created", "updated",
     inlines = OrderItemInline,
     actions = [export_to_csv]
