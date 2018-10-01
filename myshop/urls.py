@@ -9,6 +9,7 @@ urlpatterns += [
     path("cart/", include("cart.urls", namespace="cart")),
     path("payment/", include("payment.urls", namespace="payment")),
     path("", include("shop.urls", namespace="shop")),
+    path("coupons/", include("coupons.urls", namespace="coupons")),
     path("orders/", include("orders.urls", namespace="orders")),
 ]
 

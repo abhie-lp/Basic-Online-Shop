@@ -13,8 +13,13 @@
                     <span><strong>Rs.{{item.total_price}}</strong></span>
                 </li>
             {% endfor %}
+            {% if cart.coupon %}
+                <li>"{{cart.coupon.code}}" ({{cart.coupon.discount}}% off)
+                    <span>- Rs.{{cart.get_discount|floatformat:"2"}}</span>
+                </li>
+            {% endif %}
         </ul>
-        <p>Total: Rs.{{cart.get_total_price}}</p>
+        <p>Total: Rs.{{cart.get_total_price_after_discount|floatformat:"2"}}</p>
     </div>
 
     <form action="." method="POST" class="order-form">
